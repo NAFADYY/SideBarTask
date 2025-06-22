@@ -1,0 +1,180 @@
+:root {
+  /* دايرة الشمال (البيضا) */
+  --left-corner-radius-topleft: 0%;
+  --left-corner-radius-topright: 100%;
+  --left-corner-radius-bottomright: 0%;
+  --left-corner-radius-bottomleft: 0%;
+
+  /* دايرة اليمين (البيضا) */
+  --right-corner-radius-topleft: 350%;
+  --right-corner-radius-topright: 50%;
+  --right-corner-radius-bottomright: 50%;
+  --right-corner-radius-bottomleft: 0%;
+
+  /* الدايرة الزرقا الشمال */
+  --left-blue-size: 25px;
+  --left-blue-x: -12px;
+  --left-blue-y: -20px;
+  --left-blue-radius-topleft: 0%;
+  --left-blue-radius-topright: 50%;
+  --left-blue-radius-bottomright: 50%;
+  --left-blue-radius-bottomleft: 50%;
+
+  /* الدايرة الزرقا اليمين */
+  --right-blue-size: 25px;
+  --right-blue-x: -12px;
+  --right-blue-y: -20px;
+  --right-blue-radius-topleft: 50%;
+  --right-blue-radius-topright: 0%;
+  --right-blue-radius-bottomright: 50%;
+  --right-blue-radius-bottomleft: 50%;
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  box-shadow: 0 -2px 12px 0 rgba(0, 0, 0, 0.07);
+  padding: 1rem 0 0.35rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  z-index: 50;
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+/* لينك الناف بار */
+.mobile-nav-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+  min-height: 42px;
+  color: #222;
+  justify-content: flex-start;
+  transition: color 0.2s;
+  font-size: 1.6rem;
+}
+.mobile-nav-link:not(.active):hover .nav-icon {
+  color: #0077cc;
+}
+
+.nav-icon {
+  z-index: 2;
+  font-size: 1.4rem;
+  pointer-events: none;
+}
+
+.mobile-nav-link.active {
+  color: #fff;
+}
+
+.mobile-nav-link.active .nav-icon {
+  color: #fff;
+  z-index: 3;
+}
+
+/* الجزء الأزرق */
+.nav-blob {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 58px;
+  background: #0077cc;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 1.4rem;
+  border-bottom-left-radius: 1.4rem;
+  z-index: 1;
+}
+
+.nav-blob-corner {
+  position: absolute;
+  bottom: 0;
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  z-index: 2;
+}
+
+/* تحكم كامل في دايرة الشمال */
+.nav-blob-corner.left {
+  left: -28px;
+  top: -16px;
+  border-radius: var(--left-corner-radius-topleft, 50%)
+    var(--left-corner-radius-topright, 50%)
+    var(--left-corner-radius-bottomright, 50%)
+    var(--left-corner-radius-bottomleft, 50%);
+}
+
+/* تحكم كامل في دايرة اليمين */
+.nav-blob-corner.right {
+  right: -28px;
+  top: -16px;
+  border-radius: var(--right-corner-radius-topleft, 50%)
+    var(--right-corner-radius-topright, 50%)
+    var(--right-corner-radius-bottomright, 50%)
+    var(--right-corner-radius-bottomleft, 50%);
+}
+
+/* نص دايرة بيضا على الجنب */
+.nav-blob-corner {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+
+  z-index: 2;
+}
+.nav-blob-corner.left {
+  left: -19px;
+  top: -15px;
+}
+.nav-blob-corner.right {
+  right: -19px;
+  top: -15px;
+}
+
+/* الدايرة الزرقا تحت البيضا (الشمال) */
+.nav-blob-blue.left-blue {
+  position: absolute;
+  width: var(--left-blue-size);
+  height: var(--left-blue-size);
+  background: #0077cc;
+  left: var(--left-blue-x);
+  top: var(--left-blue-y);
+  z-index: 1;
+  border-radius: var(--left-blue-radius-topleft, 50%)
+    var(--left-blue-radius-topright, 50%)
+    var(--left-blue-radius-bottomright, 50%)
+    var(--left-blue-radius-bottomleft, 50%);
+}
+
+/* الدايرة الزرقا تحت البيضا (اليمين) */
+.nav-blob-blue.right-blue {
+  position: absolute;
+  width: var(--right-blue-size);
+  height: var(--right-blue-size);
+  background: #0077cc;
+  right: var(--right-blue-x);
+  top: var(--right-blue-y);
+  z-index: 1;
+  border-radius: var(--right-blue-radius-topleft, 50%)
+    var(--right-blue-radius-topright, 50%)
+    var(--right-blue-radius-bottomright, 50%)
+    var(--right-blue-radius-bottomleft, 50%);
+}
+
+@media (min-width: 1028px) {
+  .mobile-bottom-nav {
+    display: none;
+  }
+}

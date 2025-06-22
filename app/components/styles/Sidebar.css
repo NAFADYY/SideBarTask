@@ -1,0 +1,159 @@
+:root {
+  --sidebar-top: 41px;
+  --sidebar-left: 46px;
+  --sidebar-width: 213px;
+  --sidebar-radius: 30.82px;
+  --nav-height: 60px;
+  --nav-gap: 0.5rem;
+  --active-offset: 15px;
+  --active-bg: #0077cc;
+  --active-radius-left: 47px;
+
+  --outer-circle-size: 75px;
+  --white-circle-size: 50px;
+
+  /* تحكم في مكان الدائرة البيضاء داخل الزرقاء */
+  --white-top-x: -12px; /* يمين/شمال للدائرة العلوية */
+  --white-top-y: -18px; /* فوق/تحت للدائرة العلوية */
+  --white-bottom-x: -14px; /* يمين/شمال للدائرة السفلية */
+  --white-bottom-y: 43px; /* فوق/تحت للدائرة السفلية */
+
+  /* راديوس الدائرة البيضاء العلوية (اسيبهم زي ما انت ظابطهم) */
+  --white-radius-topleft: 50%;
+  --white-radius-topright: 50%;
+  --white-radius-bottomright: 190%;
+  --white-radius-bottomleft: 0%;
+
+  /* راديوس الدائرة البيضاء السفلية (تتحكم فيهم براحتك من غير ما يأثروا على اللي فوق) */
+  --white-radius-topleft-bottom: 50%;
+  --white-radius-topright-bottom: 110%;
+  --white-radius-bottomright-bottom: 50%;
+  --white-radius-bottomleft-bottom: 50%;
+}
+
+.sidebar {
+  position: fixed;
+  top: var(--sidebar-top);
+  left: var(--sidebar-left);
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: #fff;
+  border-radius: var(--sidebar-radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 0;
+  overflow: hidden;
+}
+
+.nav {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--nav-gap);
+}
+
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--nav-gap);
+  width: 100%;
+  height: var(--nav-height);
+  padding: 0 3rem;
+  color: #4a4a4a;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* .nav-link:hover {
+  background: rgba(0, 0, 0, 0.03);
+} */
+
+.nav-link.active {
+  margin-left: var(--active-offset);
+  width: calc(100% - var(--active-offset));
+  background: var(--active-bg);
+  color: #fff;
+  border-top-left-radius: var(--active-radius-left);
+  border-bottom-left-radius: var(--active-radius-left);
+  z-index: 1;
+  overflow: visible;
+}
+
+/* الدواير الزرقا */
+.circle-wrapper {
+  position: absolute;
+  width: var(--outer-circle-size);
+  height: var(--outer-circle-size);
+  background: var(--active-bg);
+  border-radius: 50%;
+  right: calc(var(--outer-circle-size) * -0.5);
+  z-index: 10;
+}
+
+/* فوق وتحت */
+.top-circle {
+  top: calc(var(--outer-circle-size) * -0.43);
+}
+.bottom-circle {
+  bottom: calc(var(--outer-circle-size) * -0.43);
+}
+
+.inner-white-circle {
+  position: absolute;
+  width: var(--white-circle-size);
+  height: var(--white-circle-size);
+  background: #fff;
+  display: block;
+  z-index: 11;
+  /* الافتراضي للدائرة البيضا (العلوية) */
+  border-radius: var(--white-radius-topleft, 50%)
+    var(--white-radius-topright, 50%) var(--white-radius-bottomright, 50%)
+    var(--white-radius-bottomleft, 50%);
+}
+
+/* الدائرة البيضا العلوية */
+.top-circle .inner-white-circle {
+  left: var(--white-top-x);
+  top: var(--white-top-y);
+  /* هنا بنسيب الراديوس زي ما هو في الافتراضي */
+}
+
+/* الدائرة البيضا السفلية ــ هنا اتحكم براحتك في الراديوس */
+.bottom-circle .inner-white-circle {
+  left: var(--white-bottom-x);
+  top: var(--white-bottom-y);
+  border-radius: var(--white-radius-topleft-bottom, 50%)
+    var(--white-radius-topright-bottom, 50%)
+    var(--white-radius-bottomright-bottom, 50%)
+    var(--white-radius-bottomleft-bottom, 50%);
+}
+
+/* دا عشان الدايرة البيضا تطلع فوق الزرقا دايمًا */
+.inner-white-circle {
+  z-index: 11;
+}
+
+/* رابط Logout في الأسفل */
+.logout {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--nav-gap);
+  padding: 0 3rem;
+  height: var(--nav-height);
+  color: #e32134;
+  text-decoration: none;
+}
+
+@media (max-width: 1028px) {
+  .sidebar {
+    display: none;
+  }
+}
