@@ -14,7 +14,7 @@ import './styles/Sidebar.css'
 export default function Sidebar() {
   const path = usePathname()
   const items = [
-    { href: '/dashboard', icon: BsGridFill, label: 'Dashboard' },
+    { href: '/', icon: BsGridFill, label: 'Dashboard' },
     { href: '/teams', icon: BsPeopleFill, label: 'Teams' },
     { href: '/payments', icon: BsCreditCard2Back, label: 'Payments' },
     { href: '/attendance', icon: BsCalendarCheck, label: 'Attendance' },
